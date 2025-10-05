@@ -234,18 +234,18 @@ Thanks goes to these wonderful people:
 </tr><tr>
 
   <td align="center">
-    <a href="https://github.com/nikeshadhikari9">
-      <img src="https://avatars.githubusercontent.com/u/133838660?v=4" width="100px;" alt="nikeshadhikari9"/>
-      <br />
-      <sub><b>nikeshadhikari9</b></sub>
-    </a>
-    <br />💻
-  </td>
-  <td align="center">
     <a href="https://github.com/apps/github-actions">
       <img src="https://avatars.githubusercontent.com/in/15368?v=4" width="100px;" alt="github-actions[bot]"/>
       <br />
       <sub><b>github-actions[bot]</b></sub>
+    </a>
+    <br />💻
+  </td>
+  <td align="center">
+    <a href="https://github.com/nikeshadhikari9">
+      <img src="https://avatars.githubusercontent.com/u/133838660?v=4" width="100px;" alt="nikeshadhikari9"/>
+      <br />
+      <sub><b>nikeshadhikari9</b></sub>
     </a>
     <br />💻
   </td>
