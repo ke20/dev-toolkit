@@ -30,16 +30,16 @@ h1{ margin:0 0 12px 0; font-size:20px; }
 }
 
 #codeInput{
-  width:100%; min-height:160px; resize:vertical; border-radius:8px; padding:12px;
-  background:#0b1220; color:#d1d8e0; border:1px solid rgba(255,255,255,0.03);
+  width:100%; min-height:190px; resize:vertical; border-radius:5px; padding:12px;
+  background:#15223d; color:#d1d8e0; border:2px solid rgba(255,255,255,0.03);
   font-family: var(--mono); font-size:13px; margin-bottom:12px;
 }
 
 #previewWrapper{ display:flex; justify-content:center; padding:12px 0; }
 
 .preview{
-  border-radius:14px; padding:20px; width:880px; max-width:100%;
-  background: #0b1220;
+  border-radius:20px; padding:20px; width:880px; max-width:100%;
+  background: #14213a;
   box-shadow: 0 8px 30px rgba(2,6,23,0.7);
 }
 
