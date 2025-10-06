@@ -658,6 +658,15 @@ function initAdvancedSearch() {
       url: "tools/random-number-generator/index.html",
     },
     {
+      name: "Morse Code Translator",
+      description: "Convert text to Morse code and Morse code back to text — supports letters, numbers, and punctuation.",
+      category: "text",
+      keywords: ["morse", "code", "translator", "text", "signal", "dot", "dash", "convert", "communication"],
+      icon: "fas fa-wave-square",
+      url: "tools/morse-code-translator/index.html",
+    },
+
+    {
       name: "Even Odd Checker",
       description:
         "A simple tool to check whether a number is even or odd. Perfect for quick mathematical verifications.",
