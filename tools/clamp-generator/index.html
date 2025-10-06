@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>clamp() Generator - DevToolkit</title>
+    <link rel="stylesheet" href="../../style.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #0a0f1e 0%, #1a1f2e 100%);
+        color: var(--text-primary);
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+      }
+      .tool-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      .tool-header {
+        text-align: center;
+        margin-bottom: 1.25rem;
+      }
+      .tool-title {
+        font-size: clamp(1.6rem, 4vw, 2.6rem);
+        font-weight: 700;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 0.5rem;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+      label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-weight: 600;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 0.65rem 0.8rem;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+      }
+      .controls {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+      button {
+        background: var(--primary-color);
+        border: none;
+        padding: 0.7rem 1rem;
+        color: #fff;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .result-box {
+        padding: 1rem;
+        background: var(--bg-secondary);
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        min-height: 80px;
+        white-space: pre-wrap;
+      }
+      .preview {
+        padding: 1.5rem;
+        background: var(--bg-secondary);
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        text-align: center;
+      }
+      .preview .sample {
+        display: inline-block;
+        padding: 0.6rem 1rem;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text-primary);
+      }
+      .row {
+        display: flex;
+        gap: 1rem;
+      }
+      .muted {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .back-button {
+        position: fixed;
+        top: 2rem;
+        left: 2rem;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+        text-decoration: none;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+      }
+      .back-button:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: translateY(-2px);
+      }
+      @media (max-width: 800px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .row {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="../../index.html" class="back-button"
+      ><i class="fas fa-arrow-left"></i> Back to Tools</a
+    >
+
+    <div class="tool-container">
+      <div class="tool-header">
+        <h1 class="tool-title">clamp() Generator — Fluid Typography</h1>
+        <p class="muted">
+          Provide minimum, maximum sizes and viewport breakpoints to generate a
+          responsive CSS `clamp()` expression.
+        </p>
+      </div>
+
+      <div class="grid">
+        <div>
+          <label>Minimum font size (px)</label>
+          <input id="min-size" type="number" value="16" min="1" step="0.1" />
+          <label>Maximum font size (px)</label>
+          <input id="max-size" type="number" value="24" min="1" step="0.1" />
+          <label>Preferred/reference font size (optional, px)</label>
+          <input
+            id="pref-size"
+            type="number"
+            value=""
+            placeholder="Optional — used as visual reference"
+          />
+        </div>
+
+        <div>
+          <label>Viewport width at minimum size (px)</label>
+          <input id="min-vw" type="number" value="320" min="1" step="1" />
+          <label>Viewport width at maximum size (px)</label>
+          <input id="max-vw" type="number" value="1200" min="1" step="1" />
+          <label>Units for output</label>
+          <select id="output-unit">
+            <option value="px">px (default)</option>
+            <option value="rem">rem (based on 16px)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row" style="margin-bottom: 1rem">
+        <button id="generate">Generate clamp()</button>
+        <button
+          id="copy"
+          style="
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--text-primary);
+          "
+        >
+          Copy CSS
+        </button>
+        <button
+          id="reset"
+          style="
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--text-primary);
+          "
+        >
+          Reset
+        </button>
+      </div>
+
+      <h4>Generated CSS</h4>
+      <div id="result" class="result-box">
+        Click Generate to create a clamp() expression.
+      </div>
+
+      <h4 style="margin-top: 1rem">Live preview</h4>
+      <div class="preview">
+        <div class="sample" id="preview-sample">
+          The quick brown fox jumps over the lazy dog
+        </div>
+        <div class="muted" style="margin-top: 0.5rem">
+          Resize your browser to see the font size respond.
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
