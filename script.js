@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initMicroAnimations();
     initSectionAnimations();
     initBackToTop();
+    initDarkModeToggle();
 
     // Hide loading screen after initialization
     setTimeout(hideLoadingScreen, 1500);
@@ -87,7 +88,34 @@ function hideLoadingScreen() {
     }, 800);
   }
 }
+// Dark Mode Toggle Functionality
+function initDarkModeToggle() {
+    const themeToggleButton = document.getElementById('theme-toggle');
+    if (!themeToggleButton) return;
 
+    // Function to apply the theme based on the mode
+    const applyTheme = (theme) => {
+        if (theme === 'light') {
+            document.body.classList.add('light-mode');
+        } else {
+            document.body.classList.remove('light-mode');
+        }
+    };
+    
+    // Check for saved user preference on load
+    // Use 'ui-mode' to not conflict with the existing theme system
+    const savedTheme = localStorage.getItem('ui-mode') || 'dark';
+    applyTheme(savedTheme);
+
+    // Add event listener for the toggle button
+    themeToggleButton.addEventListener('click', () => {
+        const isLight = document.body.classList.contains('light-mode');
+        const newTheme = isLight ? 'dark' : 'light';
+        
+        applyTheme(newTheme);
+        localStorage.setItem('ui-mode', newTheme);
+    });
+}
 // Typing Effect Animation with performance optimization
 function initTypingEffect() {
   const typingText = document.querySelector(".typing-text");
@@ -251,6 +279,8 @@ function initScrollAnimations() {
 }
 
 // Navbar Scroll Effect
+// script.js
+
 function initNavbarScroll() {
   const navbar = document.querySelector(".navbar");
   let lastScrollTop = 0;
@@ -258,15 +288,14 @@ function initNavbarScroll() {
   window.addEventListener("scroll", () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
+    // ✅ FIXED: Toggle a class instead of setting inline styles
     if (scrollTop > 100) {
-      navbar.style.background = "rgba(15, 15, 35, 0.98)";
-      navbar.style.backdropFilter = "blur(30px)";
+      navbar.classList.add('scrolled');
     } else {
-      navbar.style.background = "rgba(15, 15, 35, 0.95)";
-      navbar.style.backdropFilter = "blur(20px)";
+      navbar.classList.remove('scrolled');
     }
 
-    // Hide navbar on scroll down, show on scroll up
+    // This part for hiding/showing the navbar is fine and can stay
     if (scrollTop > lastScrollTop && scrollTop > 100) {
       navbar.style.transform = "translateY(-100%)";
     } else {
@@ -276,7 +305,6 @@ function initNavbarScroll() {
     lastScrollTop = scrollTop;
   });
 }
-
 // Smooth Scrolling for Navigation Links
 function initSmoothScrolling() {
   const navLinks = document.querySelectorAll('a[href^="#"]');
