@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Builder</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Form Elements</h2>
+            <div class="form-element" draggable="true" data-type="text">
+                <i class="fas fa-font"></i> Text Input
+            </div>
+            <div class="form-element" draggable="true" data-type="email">
+                <i class="fas fa-envelope"></i> Email Input
+            </div>
+            <div class="form-element" draggable="true" data-type="password">
+                <i class="fas fa-lock"></i> Password Input
+            </div>
+            <div class="form-element" draggable="true" data-type="number">
+                <i class="fas fa-hashtag"></i> Number Input
+            </div>
+            <div class="form-element" draggable="true" data-type="textarea">
+                <i class="fas fa-paragraph"></i> Textarea
+            </div>
+            <div class="form-element" draggable="true" data-type="select">
+                <i class="fas fa-caret-square-down"></i> Dropdown
+            </div>
+            <div class="form-element" draggable="true" data-type="button">
+                <i class="fas fa-square"></i> Button
+            </div>
+            <div class="form-element" draggable="true" data-type="submit">
+                <i class="fas fa-check-square"></i> Submit Button
+            </div>
+            <div class="form-element" draggable="true" data-type="checkbox">
+                <i class="fas fa-check-square"></i> Checkbox
+            </div>
+            <div class="form-element" draggable="true" data-type="radio">
+                <i class="fas fa-dot-circle"></i> Radio Button
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="header">
+                <h1><i class="fas fa-paint-brush"></i> Form Builder</h1>
+            </div>
+            <div class="workspace">
+                <div class="canvas-container">
+                    <div class="canvas empty" id="canvas">
+                    </div>
+                </div>
+                <div class="code-container">
+                    <div class="code-header">
+                        <h3>Generated HTML</h3>
+                        <button class="copy-btn" id="copyBtn">Copy Code</button>
+                    </div>
+                    <div class="code-editor">
+                        <textarea id="codeOutput" placeholder="Your HTML code will appear here..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
