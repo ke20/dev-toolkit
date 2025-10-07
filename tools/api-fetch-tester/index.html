@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Request Tester - DevToolkit</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #ff6b35;        /* Hacktoberfest Orange */
+      --secondary-color: #0081b4;      /* Blue */
+      --accent-color: #ff8c42;         /* Light Orange */
+      --success-color: #7ed321;        /* Green */
+      --warning-color: #f5a623;        /* Yellow */
+      --error-color: #d0021b;          /* Red */
+
+      --bg-primary: #0f0f23;           /* Dark Background */
+      --bg-secondary: #1a1a2e;         /* Card Background */
+      --text-primary: #ffffff;         /* White Text */
+      --text-secondary: #b8b8d1;       /* Light Gray Text */
+      --text-muted: #8b8ba7;           /* Muted Text */
+    }
+
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .tool-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .tool-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .tool-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+
+    .tool-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .back-button {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      text-decoration: none;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(20px);
+    }
+
+    .back-button:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+    }
+
+    /* === API Tester Layout === */
+    .api-tester {
+      background: var(--bg-secondary);
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-top: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-secondary);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #14142f;
+      color: var(--text-primary);
+      font-family: monospace;
+      transition: all 0.2s ease;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.3);
+    }
+
+    button {
+      margin-top: 1.5rem;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.9rem 1.5rem;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    button:hover {
+      background: var(--accent-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(255, 108, 53, 0.4);
+    }
+
+    .response-container {
+      margin-top: 2rem;
+      background: #14142f;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      display: none;
+      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .status {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--accent-color);
+    }
+
+    .headers {
+      background: #1e1e3f;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      white-space: pre-wrap;
+      font-family: monospace;
+      color: var(--text-muted);
+    }
+
+    .json {
+      background: #0f172a;
+      color: #a7f3d0;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      font-family: monospace;
+      overflow-x: auto;
+      white-space: pre;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="animated-bg">
+    <div class="floating-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+      <div class="shape shape-5"></div>
+    </div>
+  </div>
+
+  <!-- Back Button -->
+  <a href="../../index.html" class="back-button">
+    <i class="fas fa-arrow-left"></i>
+    Back to Tools
+  </a>
+
+  <div class="tool-container">
+    <!-- Header -->
+    <div class="tool-header">
+      <h1 class="tool-title">API Request Tester</h1>
+      <p class="tool-subtitle">
+        Test REST API endpoints easily — choose HTTP method, send requests, and view responses with status, headers, and formatted JSON.
+      </p>
+    </div>
+
+    <!-- API Tester -->
+    <div class="api-tester">
+      <label for="url">API Endpoint:</label>
+      <input type="text" id="url" placeholder="https://jsonplaceholder.typicode.com/posts" />
+
+      <label for="method">HTTP Method:</label>
+      <select id="method">
+        <option value="GET">GET</option>
+        <option value="POST">POST</option>
+      </select>
+
+      <div id="bodyInput" style="display: none;">
+        <label for="body">Request Body (JSON):</label>
+        <textarea id="body" rows="5" placeholder='{"title": "foo", "body": "bar", "userId": 1}'></textarea>
+      </div>
+
+      <button id="sendRequest"><i class="fa-solid fa-paper-plane"></i> Send Request</button>
+
+      <div id="responseContainer" class="response-container">
+        <div class="status"></div>
+        <div class="headers"></div>
+        <div class="json"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const methodSelect = document.getElementById("method");
+    const bodyInput = document.getElementById("bodyInput");
+    const sendBtn = document.getElementById("sendRequest");
+    const responseContainer = document.getElementById("responseContainer");
+    const statusDiv = responseContainer.querySelector(".status");
+    const headersDiv = responseContainer.querySelector(".headers");
+    const jsonDiv = responseContainer.querySelector(".json");
+
+    methodSelect.addEventListener("change", () => {
+      bodyInput.style.display = methodSelect.value === "POST" ? "block" : "none";
+    });
+
+    sendBtn.addEventListener("click", async () => {
+      const url = document.getElementById("url").value.trim();
+      const method = methodSelect.value;
+      const body = document.getElementById("body").value;
+
+      if (!url) {
+        alert("Please enter a valid API URL.");
+        return;
+      }
+
+      responseContainer.style.display = "block";
+      statusDiv.textContent = "Loading...";
+      headersDiv.textContent = "";
+      jsonDiv.textContent = "";
+
+      try {
+        const options = { method };
+        if (method === "POST" && body) {
+          options.headers = { "Content-Type": "application/json" };
+          options.body = body;
+        }
+
+        const response = await fetch(url, options);
+        const text = await response.text();
+
+        let jsonData;
+        try {
+          jsonData = JSON.parse(text);
+        } catch {
+          jsonData = text;
+        }
+
+        statusDiv.textContent = `Status: ${response.status} ${response.statusText}`;
+        headersDiv.innerHTML = "<strong>Headers:</strong><br>" + [...response.headers.entries()]
+          .map(([k, v]) => `${k}: ${v}`)
+          .join("\n");
+
+        jsonDiv.textContent = typeof jsonData === "object"
+          ? JSON.stringify(jsonData, null, 2)
+          : jsonData;
+
+      } catch (err) {
+        statusDiv.textContent = "Error: " + err.message;
+      }
+    });
+  </script>
+</body>
+</html>
