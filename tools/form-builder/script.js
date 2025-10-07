@@ -297,11 +297,14 @@ function generateCode() {
     const elements = canvas.querySelectorAll('.dropped-element');
     elements.forEach(elem => {
         const type = elem.dataset.type;
-        const label = elem.querySelector('label').textContent;
+        const labelEl = elem.querySelector('label');
+        const label = labelEl ? labelEl.textContent : '';
         const id = `${type}-${Math.random().toString(36).substr(2, 9)}`;
 
         html += '  <div class="form-group">\n';
-        html += `    <label for="${id}">${label}</label>\n`;
+        if (!(type === 'button' || type === 'submit' || type === 'checkbox' || type === 'radio')) {
+            html += `    <label for="${id}">${label}</label>\n`;
+        }
         
         switch(type) {
             case 'text':
@@ -326,15 +329,23 @@ function generateCode() {
                 break;
             case 'checkbox':
                 html += `    <input type="checkbox" id="${id}" class="form-check-input">\n`;
+                html += `    <label for="${id}">${elem.dataset.checkboxLabel || 'Checkbox'}</label>\n`;
                 break;
             case 'radio':
                 html += `    <input type="radio" id="${id}" class="form-check-input">\n`;
+                html += `    <label for="${id}">${elem.dataset.radioLabel || 'Option'}</label>\n`;
                 break;
             case 'button':
-                html += `    <button type="button" id="${id}" class="btn btn-primary">${label}</button>\n`;
+                {
+                    const btnText = (elem.querySelector('button') && elem.querySelector('button').textContent) || 'Button';
+                    html += `    <button type="button" id="${id}" class="btn btn-primary">${btnText}</button>\n`;
+                }
                 break;
             case 'submit':
-                html += `    <button type="submit" id="${id}" class="btn btn-primary">${label}</button>\n`;
+                {
+                    const btnText = (elem.querySelector('button') && elem.querySelector('button').textContent) || 'Submit';
+                    html += `    <button type="submit" id="${id}" class="btn btn-primary">${btnText}</button>\n`;
+                }
                 break;
         }
         html += '  </div>\n';

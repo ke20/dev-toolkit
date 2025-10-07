@@ -1,61 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Builder - DevToolkit</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        .tool-container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 2rem 4rem;
+        }
+
+        .tool-header {
+            margin-bottom: 2.5rem;
+            text-align: center;
+            animation: fadeInDown 1s ease;
+        }
+
+        .tool-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.75rem;
+        }
+
+        .tool-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .sidebar {
+            background: rgba(26, 26, 46, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            backdrop-filter: blur(25px);
+        }
+
+        .sidebar h2 {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-element {
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            background: rgba(15, 15, 35, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            cursor: move;
+            transition: all 0.3s ease;
+        }
+
+        .form-element:hover {
+            transform: translateY(-2px);
+            background: rgba(26, 26, 46, 0.9);
+            border-color: var(--primary-color);
+        }
+
+        .workspace {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .canvas-container,
+        .code-container {
+            background: rgba(26, 26, 46, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            min-height: 600px;
+            backdrop-filter: blur(25px);
+        }
+
+        .canvas {
+            min-height: 550px;
+            border: 2px dashed rgba(255, 255, 255, 0.15);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+        }
+
+        .canvas.empty {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .code-header h3 {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .copy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--radius-md);
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            background: var(--gradient-primary);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        #codeOutput {
+            width: 100%;
+            min-height: 550px;
+            padding: 1.5rem;
+            background: rgba(15, 15, 35, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-family: monospace;
+            resize: vertical;
+        }
+
+        .dropped-element {
+            background: rgba(20, 20, 40, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1rem 1rem 1rem 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .dropped-element label {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #ccc;
+            margin-bottom: 0.5rem;
+        }
+        .dropped-element .input-container {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .dropped-element input,
+        .dropped-element textarea,
+        .dropped-element select {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(10, 10, 25, 0.9);
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+        .dropped-element input:focus,
+        .dropped-element textarea:focus,
+        .dropped-element select:focus {
+            outline: none;
+            border: 1px solid #ff6b35;
+            box-shadow: 0 0 12px rgba(255, 107, 53, 0.6);
+        }
+
+        .dropped-element .delete-btn {
+            position: relative;
+            float: right;
+            background: rgba(255, 68, 68, 0.12);
+            border: none;
+            color: #ff4d4d;
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0.5rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+        }
+
+        .dropped-element .delete-btn:hover {
+            background: rgba(255, 68, 68, 0.25);
+            color: #ff6b35;
+        }
+        .back-button {
+        position: fixed;
+        top: 2rem;
+        left: 2rem;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+        text-decoration: none;
+        border-radius: var(--radius-md);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        backdrop-filter: blur(20px);
+      }
+
+      .back-button:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+
+
+        @media (max-width: 1200px) {
+            .tool-container {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .workspace {
+                grid-template-columns: 1fr;
+            }
+
+            .canvas-container,
+            .code-container {
+                min-height: 500px;
+            }
+
+            .canvas,
+            #codeOutput {
+                min-height: 450px;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <div class="container">
-        <!-- Back Button -->
-    
-        <div class="sidebar">
-            
-            <h2>Form Elements</h2>
-            <div class="form-element" draggable="true" data-type="text">
-                <i class="fas fa-font"></i> Text Input
-            </div>
-            <div class="form-element" draggable="true" data-type="email">
-                <i class="fas fa-envelope"></i> Email Input
-            </div>
-            <div class="form-element" draggable="true" data-type="password">
-                <i class="fas fa-lock"></i> Password Input
-            </div>
-            <div class="form-element" draggable="true" data-type="number">
-                <i class="fas fa-hashtag"></i> Number Input
-            </div>
-            <div class="form-element" draggable="true" data-type="textarea">
-                <i class="fas fa-paragraph"></i> Textarea
-            </div>
-            <div class="form-element" draggable="true" data-type="select">
-                <i class="fas fa-caret-square-down"></i> Dropdown
-            </div>
-            <div class="form-element" draggable="true" data-type="button">
-                <i class="fas fa-square"></i> Button
-            </div>
-            <div class="form-element" draggable="true" data-type="submit">
-                <i class="fas fa-check-square"></i> Submit Button
-            </div>
-            <div class="form-element" draggable="true" data-type="checkbox">
-                <i class="fas fa-check-square"></i> Checkbox
-            </div>
-            <div class="form-element" draggable="true" data-type="radio">
-                <i class="fas fa-dot-circle"></i> Radio Button
-            </div>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <a href="../../index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        Back to Tools
+    </a>
+
+    <div class="tool-container">
+        <div class="tool-header">
+            <h1 class="tool-title">Form Builder</h1>
+            <p class="tool-subtitle">
+                Create custom forms with drag and drop interface. Get clean HTML code instantly.
+            </p>
         </div>
 
         <div class="main-content">
-            <div class="header">
-            
-                <a href="../../index.html" class="back-button">
-                    <i class="fas fa-arrow-left"></i>
-                    Back to Tools
-                </a>
-            
-                <h1><i class="fas fa-paint-brush"></i> Form Builder</h1>
+            <div class="sidebar">
+                <h2>Form Elements</h2>
+                <div class="form-element" draggable="true" data-type="text">
+                    <i class="fas fa-font"></i> Text Input
+                </div>
+                <div class="form-element" draggable="true" data-type="email">
+                    <i class="fas fa-envelope"></i> Email Input
+                </div>
+                <div class="form-element" draggable="true" data-type="password">
+                    <i class="fas fa-lock"></i> Password Input
+                </div>
+                <div class="form-element" draggable="true" data-type="number">
+                    <i class="fas fa-hashtag"></i> Number Input
+                </div>
+                <div class="form-element" draggable="true" data-type="textarea">
+                    <i class="fas fa-paragraph"></i> Textarea
+                </div>
+                <div class="form-element" draggable="true" data-type="select">
+                    <i class="fas fa-caret-square-down"></i> Dropdown
+                </div>
+                <div class="form-element" draggable="true" data-type="button">
+                    <i class="fas fa-square"></i> Button
+                </div>
+                <div class="form-element" draggable="true" data-type="submit">
+                    <i class="fas fa-check-square"></i> Submit Button
+                </div>
+                <div class="form-element" draggable="true" data-type="checkbox">
+                    <i class="fas fa-check-square"></i> Checkbox
+                </div>
+                <div class="form-element" draggable="true" data-type="radio">
+                    <i class="fas fa-dot-circle"></i> Radio Button
+                </div>
             </div>
+
             <div class="workspace">
                 <div class="canvas-container">
                     <div class="canvas empty" id="canvas">
@@ -64,7 +355,9 @@
                 <div class="code-container">
                     <div class="code-header">
                         <h3>Generated HTML</h3>
-                        <button class="copy-btn" id="copyBtn">Copy Code</button>
+                        <button class="copy-btn" id="copyBtn">
+                            <i class="fas fa-copy"></i> Copy Code
+                        </button>
                     </div>
                     <div class="code-editor">
                         <textarea id="codeOutput" placeholder="Your HTML code will appear here..."></textarea>
@@ -76,4 +369,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
