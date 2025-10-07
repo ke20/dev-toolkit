@@ -55,24 +55,24 @@
     <!-- Schema.org structured data -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "DevToolkit",
-      "description": "Free collection of web-based developer tools",
-      "url": "https://heysaiyad.github.io/dev-toolkit/",
-      "author": {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DevToolkit",
+    "description": "Free collection of web-based developer tools",
+    "url": "https://heysaiyad.github.io/dev-toolkit/",
+    "author": {
         "@type": "Person",
         "name": "Md Saiyad Ali",
         "url": "https://github.com/heysaiyad"
-      },
-      "offers": {
+    },
+    "offers": {
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD"
-      },
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Any",
-      "screenshot": "https://heysaiyad.github.io/dev-toolkit/poster.png"
+    },
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "screenshot": "https://heysaiyad.github.io/dev-toolkit/poster.png"
     }
     </script>
     <link rel="stylesheet" href="style.css">
@@ -113,6 +113,10 @@
                 <a href="#tools" class="nav-link">Tools</a>
                 <a href="#contribute" class="nav-link">Contribute</a>
                 <a href="#creator" class="nav-link">Creator</a>
+                <button id="theme-toggle" class="nav-link theme-toggle-btn" aria-label="Toggle light and dark theme">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i>
+            </button>
                 <a href="https://github.com/heysaiyad/dev-toolkit" target="_blank" class="nav-link github-link"
                     aria-label="View source code on GitHub">
                     <i class="fab fa-github" aria-hidden="true"></i>
@@ -467,11 +471,16 @@
             </div>
             <!--Github Profile Card generator-->
             <div id="tools-grid" class="tools-grid">
-                <a href="tools/github-profile-card/index.html" class="tool-card" data-category="utility">
+                <a href="tools/character-case-checker/index.html" class="tool-card" data-category="text">
                     <div class="tool-icon">
-                        <i class="fas fa-user-circle"></i>
+                        <i class="fas fa-font-case"></i> 
                     </div>
                     <div class="tool-content">
+                        <h3 class="tool-title">Character Case Checker</h3>
+                        <p class="tool-description">Check if a string is uppercase, lowercase, or mixed case.</p>
+                    <div class="tool-tags">
+                        <span class="tag">Text</span>
+                        <span class="tag">Utility</span>
                         <h3 class="tool-title">GitHub Profile Card</h3>
                         <p class="tool-description">
                             Generate a stylish, shareable GitHub profile card with avatar, bio, and stats.
@@ -484,7 +493,11 @@
                     <div class="tool-arrow">
                         <i class="fas fa-arrow-right"></i>
                     </div>
-                </a>
+                </div>
+                <div class="tool-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+</a>
 
                 <!--Discount Calculator-->
                 <a href="tools/SimpleDiscountCalculator/index.html" class="tool-card" data-category="utility">
@@ -525,6 +538,26 @@
                         <i class="fas fa-arrow-right"></i>
                     </div>
                 </a>
+
+                <!-- Text to ASCII Value Converter -->
+                 <a href="tools/text-to-ascii-converter/index.html" class="tool-card" data-category="text">
+                    <div class="tool-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3 class="tool-title">Text to ASCII Converter</h3>
+                        <p class="tool-description">Displays ASCII decimal values for each character.</p>
+                        <div class="tool-tags">
+                            <span class="tag">Text</span>
+                            <span class="tag">Converter</span>
+                            <span class="tag">ASCII</span>
+                        </div>
+                    </div>
+                    <div class="tool-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+                
 
 
                 <!-- Line Sorter & Unique Extractor -->
@@ -1537,6 +1570,45 @@
                                     <i class="fas fa-arrow-right"></i>
                                 </div>
                             </a>
+                          <!-- Morse Code Translator -->
+<a href="tools/morse-code-translator/index.html" class="tool-card" data-category="text">
+    <div class="tool-icon">
+        <i class="fas fa-code"></i>
+    </div>
+    <div class="tool-content">
+        <h3 class="tool-title">Morse Code Translator</h3>
+        <p class="tool-description">
+            Convert text to Morse code and Morse code back to text instantly.
+        </p>
+        <div class="tool-tags">
+            <span class="tag">Translator</span>
+            <span class="tag">Text</span>
+        </div>
+    </div>
+    <div class="tool-arrow">
+        <i class="fas fa-arrow-right"></i>
+    </div>
+</a>
+                <!-- Internet Speed Checker -->
+                <a href="tools/internet-speed/index.html" class="tool-card" data-category="utility">
+                    <div class="tool-icon">
+                        <i class="fas fa-compress"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3 class="tool-title">Internet Spped Check</h3>
+                        <p class="tool-description">A simple and fast internet speed testing tool built with HTML, CSS,
+                            and JavaScript to measure your connection's download, upload, and ping."</p>
+                        <div class="tool-tags">
+                            <span class="tag">Tool</span>
+                            <span class="tag">Internet Speed</span>
+                            <span class="tag">Web</span>
+                        </div>
+                    </div>
+                    <div class="tool-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+                
 
                             <!-- Color Contrast Checker -->
                             <a href="tools/color-contrast-checker/index.html" class="tool-card" data-category="utility">
