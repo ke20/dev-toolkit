@@ -2,11 +2,11 @@
 // Interactive elements and animations
 
 // Global error handling
-window.addEventListener('error', function(e) {
+window.addEventListener('error', function (e) {
   console.error('Global error:', e.error);
 });
 
-window.addEventListener('unhandledrejection', function(e) {
+window.addEventListener('unhandledrejection', function (e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
 
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
   try {
     // Show loading screen
     initLoadingScreen();
-    
+
     // Initialize all features
     initTypingEffect();
     initCounterAnimation();
@@ -36,7 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
     initMicroAnimations();
     initSectionAnimations();
     initBackToTop();
-    
+    initDarkModeToggle();
+
     // Hide loading screen after initialization
     setTimeout(hideLoadingScreen, 1500);
   } catch (error) {
@@ -58,14 +59,14 @@ function initLoadingScreen() {
     ];
     const textElement = loadingOverlay.querySelector('.loading-text');
     let messageIndex = 0;
-    
+
     const messageInterval = setInterval(() => {
       if (textElement) {
         textElement.textContent = messages[messageIndex];
         messageIndex = (messageIndex + 1) % messages.length;
       }
     }, 400);
-    
+
     // Store interval to clear it later
     loadingOverlay.messageInterval = messageInterval;
   }
@@ -78,16 +79,43 @@ function hideLoadingScreen() {
     if (loadingOverlay.messageInterval) {
       clearInterval(loadingOverlay.messageInterval);
     }
-    
+
     // Fade out with advanced animation
     loadingOverlay.classList.add('fade-out');
-    
+
     setTimeout(() => {
       loadingOverlay.remove();
     }, 800);
   }
 }
+// Dark Mode Toggle Functionality
+function initDarkModeToggle() {
+    const themeToggleButton = document.getElementById('theme-toggle');
+    if (!themeToggleButton) return;
 
+    // Function to apply the theme based on the mode
+    const applyTheme = (theme) => {
+        if (theme === 'light') {
+            document.body.classList.add('light-mode');
+        } else {
+            document.body.classList.remove('light-mode');
+        }
+    };
+    
+    // Check for saved user preference on load
+    // Use 'ui-mode' to not conflict with the existing theme system
+    const savedTheme = localStorage.getItem('ui-mode') || 'dark';
+    applyTheme(savedTheme);
+
+    // Add event listener for the toggle button
+    themeToggleButton.addEventListener('click', () => {
+        const isLight = document.body.classList.contains('light-mode');
+        const newTheme = isLight ? 'dark' : 'light';
+        
+        applyTheme(newTheme);
+        localStorage.setItem('ui-mode', newTheme);
+    });
+}
 // Typing Effect Animation with performance optimization
 function initTypingEffect() {
   const typingText = document.querySelector(".typing-text");
@@ -131,7 +159,7 @@ function initTypingEffect() {
   }
 
   typeMessage();
-  
+
   // Cleanup function for better memory management
   return () => {
     if (animationId) {
@@ -146,7 +174,7 @@ function initCounterAnimation() {
   const toolCards = document.querySelectorAll(".tool-card");
   const toolCounter = document.querySelector('[data-stat="tools"]');
   if (toolCounter) {
-    toolCounter.setAttribute("data-target", toolCards.length- 1);
+    toolCounter.setAttribute("data-target", toolCards.length - 1);
   }
   const animateCounter = (counter) => {
     const target = parseInt(counter.getAttribute("data-target"));
@@ -186,7 +214,7 @@ function initToolsFilter() {
   const filterButtons = document.querySelectorAll(".filter-btn");
   const toolCards = document.querySelectorAll(".tool-card:not(.add-tool-card)");
   const resultCount = document.getElementById("resultCount");
-  
+
   // Filter system ready
 
   filterButtons.forEach((button) => {
@@ -201,7 +229,7 @@ function initToolsFilter() {
 
       toolCards.forEach((card) => {
         const cardCategory = card.getAttribute("data-category");
-        
+
         if (filterValue === "all" || cardCategory === filterValue) {
           card.style.display = "flex";
           card.style.animation = "fadeInUp 0.5s ease-out";
@@ -212,7 +240,7 @@ function initToolsFilter() {
           card.classList.add('hidden');
         }
       });
-      
+
       // Update result count
       if (resultCount) {
         resultCount.textContent = visibleCount;
@@ -251,6 +279,8 @@ function initScrollAnimations() {
 }
 
 // Navbar Scroll Effect
+// script.js
+
 function initNavbarScroll() {
   const navbar = document.querySelector(".navbar");
   let lastScrollTop = 0;
@@ -258,15 +288,14 @@ function initNavbarScroll() {
   window.addEventListener("scroll", () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
+    // ✅ FIXED: Toggle a class instead of setting inline styles
     if (scrollTop > 100) {
-      navbar.style.background = "rgba(15, 15, 35, 0.98)";
-      navbar.style.backdropFilter = "blur(30px)";
+      navbar.classList.add('scrolled');
     } else {
-      navbar.style.background = "rgba(15, 15, 35, 0.95)";
-      navbar.style.backdropFilter = "blur(20px)";
+      navbar.classList.remove('scrolled');
     }
 
-    // Hide navbar on scroll down, show on scroll up
+    // This part for hiding/showing the navbar is fine and can stay
     if (scrollTop > lastScrollTop && scrollTop > 100) {
       navbar.style.transform = "translateY(-100%)";
     } else {
@@ -276,7 +305,6 @@ function initNavbarScroll() {
     lastScrollTop = scrollTop;
   });
 }
-
 // Smooth Scrolling for Navigation Links
 function initSmoothScrolling() {
   const navLinks = document.querySelectorAll('a[href^="#"]');
@@ -310,9 +338,8 @@ function initParallaxEffect() {
 
     shapes.forEach((shape, index) => {
       const speed = 0.2 + index * 0.1;
-      shape.style.transform = `translateY(${scrolled * speed}px) rotate(${
-        scrolled * 0.1
-      }deg)`;
+      shape.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1
+        }deg)`;
     });
   });
 }
@@ -342,7 +369,7 @@ document.addEventListener("DOMContentLoaded", function () {
       card.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
-        
+
         // Show a brief notification
         const notification = document.createElement("div");
         notification.className = "coming-soon-notification";
@@ -360,9 +387,9 @@ document.addEventListener("DOMContentLoaded", function () {
           z-index: 10000;
           animation: fadeInUp 0.3s ease-out;
         `;
-        
+
         document.body.appendChild(notification);
-        
+
         setTimeout(() => {
           notification.style.animation = "fadeOutDown 0.3s ease-out forwards";
           setTimeout(() => notification.remove(), 300);
@@ -651,6 +678,14 @@ function initAdvancedSearch() {
       url: "tools/percentage-calculator/index.html",
     },
     {
+      name: "Random Number Generator",
+      description: "Generate random numbers within a specified range quickly and easily.",
+      category: "utility",
+      keywords: ["random", "number", "generator", "rng", "math", "utility"],
+      icon: "fas fa-dice",
+      url: "tools/random-number-generator/index.html",
+    },
+    {
       name: "Even Odd Checker",
       description:
         "A simple tool to check whether a number is even or odd. Perfect for quick mathematical verifications.",
@@ -771,6 +806,14 @@ function initAdvancedSearch() {
       icon: "fas fa-qrcode",
       url: "#",
     },
+    {
+      name: "Text Extractor",
+      description: "Extract meaningful text from various document formats, including PDFs, Word files and images.",
+      category: "utility",
+      keywords: ["text", "extraction", "pdf", "word", "image"],
+      icon: "fas fa-file-alt",
+      url: "tools/text-extractor/index.html",
+    }
   ];
 
   let searchTimeout;
@@ -797,7 +840,7 @@ function initAdvancedSearch() {
   function handleSearch(query) {
     const results = fuzzySearch(query, toolsDatabase);
     updateToolDisplay(results, query);
-    
+
     if (query.length > 0) {
       showSuggestions(query, results);
     } else {
@@ -811,35 +854,35 @@ function initAdvancedSearch() {
 
     query = query.toLowerCase().trim();
     const queryWords = query.split(/\s+/);
-    
+
     return tools.filter((tool) => {
       const searchText = `${tool.name} ${tool.description} ${tool.keywords.join(" ")}`.toLowerCase();
-      
+
       // Exact match gets highest priority
       if (searchText.includes(query)) return true;
-      
+
       // Check if tool name starts with query
       if (tool.name.toLowerCase().startsWith(query)) return true;
-      
+
       // Check individual words
       const nameWords = tool.name.toLowerCase().split(/\s+/);
       const hasWordMatch = queryWords.some(queryWord => {
         if (queryWord.length < 2) return false;
-        
+
         // Check exact word matches
         if (nameWords.some(nameWord => nameWord.includes(queryWord))) return true;
-        
+
         // Check keywords
         return tool.keywords.some(keyword => {
           const keywordLower = keyword.toLowerCase();
-          return keywordLower.includes(queryWord) || 
-                 keywordLower.startsWith(queryWord) ||
-                 levenshteinDistance(queryWord, keywordLower) <= 1;
+          return keywordLower.includes(queryWord) ||
+            keywordLower.startsWith(queryWord) ||
+            levenshteinDistance(queryWord, keywordLower) <= 1;
         });
       });
-      
+
       if (hasWordMatch) return true;
-      
+
       // Fuzzy matching for typos (more lenient)
       return queryWords.some(word => {
         if (word.length < 3) return false;
@@ -892,13 +935,13 @@ function initAdvancedSearch() {
                 </div>
                 <div class="suggestion-content">
                     <div class="suggestion-title">${highlightText(
-                      tool.name,
-                      query
-                    )}</div>
+          tool.name,
+          query
+        )}</div>
                     <div class="suggestion-description">${highlightText(
-                      tool.description,
-                      query
-                    )}</div>
+          tool.description,
+          query
+        )}</div>
                     ${tool.url === '#' ? '<div class="coming-soon">Coming Soon</div>' : ''}
                 </div>
                 ${tool.url !== '#' ? '<div class="suggestion-arrow"><i class="fas fa-arrow-right"></i></div>' : ''}
@@ -915,7 +958,7 @@ function initAdvancedSearch() {
       item.addEventListener("click", function () {
         const url = this.getAttribute("data-url");
         const isDisabled = this.getAttribute("data-disabled") === "true";
-        
+
         if (url && url !== "#" && !isDisabled) {
           window.location.href = url;
         } else if (isDisabled) {
@@ -941,7 +984,7 @@ function initAdvancedSearch() {
 
   function updateToolDisplay(results, query) {
     let visibleCount = 0;
-    
+
     toolCards.forEach((card) => {
       const toolName = card.querySelector(".tool-title")?.textContent || "";
       const toolDesc =
@@ -959,7 +1002,7 @@ function initAdvancedSearch() {
         card.classList.add('hidden');
       }
     });
-    
+
     updateResultCount(visibleCount);
   }
 
@@ -980,7 +1023,7 @@ function initAdvancedSearch() {
 
   // Initialize count
   updateResultCount(toolCards.length);
-  
+
   // Search system initialized successfully
 }
 
@@ -1033,27 +1076,23 @@ function initThemeSystem() {
                 <h3>Choose Theme</h3>
                 <div class="theme-options">
                     ${Object.keys(themes)
-                      .map(
-                        (key) => `
-                        <div class="theme-option ${
-                          key === currentTheme ? "active" : ""
-                        }" data-theme="${key}">
+        .map(
+          (key) => `
+                        <div class="theme-option ${key === currentTheme ? "active" : ""
+            }" data-theme="${key}">
                             <div class="theme-preview">
-                                <div class="color-primary" style="background: ${
-                                  themes[key].primary
-                                }"></div>
-                                <div class="color-secondary" style="background: ${
-                                  themes[key].secondary
-                                }"></div>
-                                <div class="color-accent" style="background: ${
-                                  themes[key].accent
-                                }"></div>
+                                <div class="color-primary" style="background: ${themes[key].primary
+            }"></div>
+                                <div class="color-secondary" style="background: ${themes[key].secondary
+            }"></div>
+                                <div class="color-accent" style="background: ${themes[key].accent
+            }"></div>
                             </div>
                             <span>${themes[key].name}</span>
                         </div>
                     `
-                      )
-                      .join("")}
+        )
+        .join("")}
                 </div>
                 <button class="close-theme-selector">×</button>
             </div>
@@ -1383,10 +1422,10 @@ function initSidebar() {
 
       toolLinks.forEach((link) => {
         const toolName = link.querySelector("span")?.textContent.toLowerCase() || "";
-        
+
         // Check for matches using the same logic as main search
         let isMatch = false;
-        
+
         // Exact match
         if (toolName.includes(searchTerm)) {
           isMatch = true;
@@ -1396,15 +1435,15 @@ function initSidebar() {
             if (word.length < 2) return false;
             return toolName.includes(word) || toolName.startsWith(word);
           });
-          
+
           // Fuzzy matching with database
           if (!isMatch) {
-            const dbTool = toolsDatabase.find(tool => 
+            const dbTool = toolsDatabase.find(tool =>
               tool.name.toLowerCase() === toolName
             );
             if (dbTool) {
               isMatch = searchWords.some(word => {
-                return dbTool.keywords.some(keyword => 
+                return dbTool.keywords.some(keyword =>
                   keyword.toLowerCase().includes(word) ||
                   levenshteinDistance(word, keyword.toLowerCase()) <= 1
                 );
@@ -1632,24 +1671,24 @@ function initMicroAnimations() {
   // Enhanced filter button animations
   const filterButtons = document.querySelectorAll(".filter-btn");
   filterButtons.forEach(function (btn) {
-  btn.addEventListener("click", function () {
-    // remove pulsing class from all buttons and force reflow
-    filterButtons.forEach((b) => {
-      b.classList.remove("pulse");
-      void b.offsetWidth;
+    btn.addEventListener("click", function () {
+      // remove pulsing class from all buttons and force reflow
+      filterButtons.forEach((b) => {
+        b.classList.remove("pulse");
+        void b.offsetWidth;
+      });
+
+      // add class to clicked button
+      this.classList.add("filter-btn-active");
+
+      // remove class after animation ends (so it can be re-added next click)
+      const onEnd = () => {
+        this.classList.remove("filter-btn-active");
+        this.removeEventListener("animationend", onEnd);
+      };
+      this.addEventListener("animationend", onEnd);
     });
-
-    // add class to clicked button
-    this.classList.add("filter-btn-active");
-
-    // remove class after animation ends (so it can be re-added next click)
-    const onEnd = () => {
-      this.classList.remove("filter-btn-active");
-      this.removeEventListener("animationend", onEnd);
-    };
-    this.addEventListener("animationend", onEnd);
   });
-});
 
   // Add loading shimmer to cards initially
   setTimeout(() => {
@@ -1753,13 +1792,13 @@ function initSectionAnimations() {
 // Back to Top Button functionality
 function initBackToTop() {
   const backToTopBtn = document.getElementById('backToTopBtn');
-  
+
   if (!backToTopBtn) return;
 
   // Throttle function for performance optimization
   function throttle(func, limit) {
     let inThrottle;
-    return function() {
+    return function () {
       const args = arguments;
       const context = this;
       if (!inThrottle) {
@@ -1774,7 +1813,7 @@ function initBackToTop() {
   const toggleBackToTopButton = throttle(() => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const showThreshold = 300; // Show button after scrolling 300px
-    
+
     if (scrollTop > showThreshold) {
       backToTopBtn.classList.add('show');
     } else {
@@ -1786,14 +1825,14 @@ function initBackToTop() {
   function scrollToTop() {
     const scrollDuration = 800;
     const scrollStep = -window.scrollY / (scrollDuration / 15);
-    
+
     function scrollInterval() {
       if (window.scrollY !== 0) {
         window.scrollBy(0, scrollStep);
         setTimeout(scrollInterval, 15);
       }
     }
-    
+
     scrollInterval();
   }
 
@@ -1807,7 +1846,7 @@ function initBackToTop() {
       const timeElapsed = currentTime - startTime;
       const run = ease(timeElapsed, startPosition, -startPosition, duration);
       window.scrollTo(0, run);
-      
+
       if (timeElapsed < duration) {
         requestAnimationFrame(animation);
       }
@@ -1826,16 +1865,16 @@ function initBackToTop() {
 
   // Event listeners
   window.addEventListener('scroll', toggleBackToTopButton, { passive: true });
-  
+
   backToTopBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    
+
     // Add click animation
     backToTopBtn.style.transform = 'scale(0.95)';
     setTimeout(() => {
       backToTopBtn.style.transform = '';
     }, 150);
-    
+
     // Use modern smooth scroll if supported, fallback to custom animation
     if ('scrollBehavior' in document.documentElement.style) {
       window.scrollTo({
@@ -1865,19 +1904,19 @@ const codeDisplay = document.getElementById("color-code");
 const colorBox = document.getElementById("color-display");
 
 function getRandomHex() {
-    const hex = Math.floor(Math.random() * 16777215).toString(16);
-    return "#" + hex.padStart(6, "0");
+  const hex = Math.floor(Math.random() * 16777215).toString(16);
+  return "#" + hex.padStart(6, "0");
 }
 
 function getRandomRGB() {
-    const r = Math.floor(Math.random() * 256);
-    const g = Math.floor(Math.random() * 256);
-    const b = Math.floor(Math.random() * 256);
-    return `rgb(${r}, ${g}, ${b})`;
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r}, ${g}, ${b})`;
 }
 
 btn.addEventListener("click", () => {
-    const color = Math.random() < 0.5 ? getRandomHex() : getRandomRGB();
-    codeDisplay.textContent = color;
-    colorBox.style.backgroundColor = color;
+  const color = Math.random() < 0.5 ? getRandomHex() : getRandomRGB();
+  codeDisplay.textContent = color;
+  colorBox.style.backgroundColor = color;
 });
