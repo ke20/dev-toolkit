@@ -262,8 +262,6 @@ Thanks goes to these wonderful people:
     </a>
     <br />💻
   </td>
-</tr><tr>
-
   <td align="center">
     <a href="https://github.com/nikeshadhikari9">
       <img src="https://avatars.githubusercontent.com/u/133838660?v=4" width="100px;" alt="nikeshadhikari9"/>
@@ -315,6 +313,14 @@ Thanks goes to these wonderful people:
     <br />💻
   </td>
   <td align="center">
+    <a href="https://github.com/piyushhvarma">
+      <img src="https://avatars.githubusercontent.com/u/145499294?v=4" width="100px;" alt="piyushhvarma"/>
+      <br />
+      <sub><b>piyushhvarma</b></sub>
+    </a>
+    <br />💻
+  </td>
+  <td align="center">
     <a href="https://github.com/sahilkapase">
       <img src="https://avatars.githubusercontent.com/u/198802718?v=4" width="100px;" alt="sahilkapase"/>
       <br />
@@ -339,6 +345,24 @@ Thanks goes to these wonderful people:
     <br />💻
   </td>
   <td align="center">
+    <a href="https://github.com/iqra-codes">
+      <img src="https://avatars.githubusercontent.com/u/220503709?v=4" width="100px;" alt="iqra-codes"/>
+      <br />
+      <sub><b>iqra-codes</b></sub>
+    </a>
+    <br />💻
+  </td>
+</tr><tr>
+
+  <td align="center">
+    <a href="https://github.com/Vidhan0206">
+      <img src="https://avatars.githubusercontent.com/u/74712838?v=4" width="100px;" alt="Vidhan0206"/>
+      <br />
+      <sub><b>Vidhan0206</b></sub>
+    </a>
+    <br />💻
+  </td>
+  <td align="center">
     <a href="https://github.com/Madhvik007">
       <img src="https://avatars.githubusercontent.com/u/72201530?v=4" width="100px;" alt="Madhvik007"/>
       <br />
@@ -354,37 +378,37 @@ Thanks goes to these wonderful people:
     </a>
     <br />💻
   </td>
+  <td align="center">
+    <a href="https://github.com/iamanshikaa">
+      <img src="https://avatars.githubusercontent.com/u/235749231?v=4" width="100px;" alt="iamanshikaa"/>
+      <br />
+      <sub><b>iamanshikaa</b></sub>
+    </a>
+    <br />💻
+  </td>
+  <td align="center">
+    <a href="https://github.com/Krutika-Joshi">
+      <img src="https://avatars.githubusercontent.com/u/167503423?v=4" width="100px;" alt="Krutika-Joshi"/>
+      <br />
+      <sub><b>Krutika-Joshi</b></sub>
+    </a>
+    <br />💻
+  </td>
+  <td align="center">
+    <a href="https://github.com/SudeepMalipeddi">
+      <img src="https://avatars.githubusercontent.com/u/117987615?v=4" width="100px;" alt="SudeepMalipeddi"/>
+      <br />
+      <sub><b>SudeepMalipeddi</b></sub>
+    </a>
+    <br />💻
+  </td>
 </tr><tr>
 
   <td align="center">
-    <a href="https://github.com/Vidhan0206">
-      <img src="https://avatars.githubusercontent.com/u/74712838?v=4" width="100px;" alt="Vidhan0206"/>
+    <a href="https://github.com/StreptoBordos">
+      <img src="https://avatars.githubusercontent.com/u/115786949?v=4" width="100px;" alt="StreptoBordos"/>
       <br />
-      <sub><b>Vidhan0206</b></sub>
-    </a>
-    <br />💻
-  </td>
-  <td align="center">
-    <a href="https://github.com/arshiyank">
-      <img src="https://avatars.githubusercontent.com/u/227343491?v=4" width="100px;" alt="arshiyank"/>
-      <br />
-      <sub><b>arshiyank</b></sub>
-    </a>
-    <br />💻
-  </td>
-  <td align="center">
-    <a href="https://github.com/KRISHNASAKTHIESWAR">
-      <img src="https://avatars.githubusercontent.com/u/158746099?v=4" width="100px;" alt="KRISHNASAKTHIESWAR"/>
-      <br />
-      <sub><b>KRISHNASAKTHIESWAR</b></sub>
-    </a>
-    <br />💻
-  </td>
-  <td align="center">
-    <a href="https://github.com/ke20">
-      <img src="https://avatars.githubusercontent.com/u/1608482?v=4" width="100px;" alt="ke20"/>
-      <br />
-      <sub><b>ke20</b></sub>
+      <sub><b>StreptoBordos</b></sub>
     </a>
     <br />💻
   </td>
@@ -397,28 +421,26 @@ Thanks goes to these wonderful people:
     <br />💻
   </td>
   <td align="center">
-    <a href="https://github.com/StreptoBordos">
-      <img src="https://avatars.githubusercontent.com/u/115786949?v=4" width="100px;" alt="StreptoBordos"/>
+    <a href="https://github.com/ke20">
+      <img src="https://avatars.githubusercontent.com/u/1608482?v=4" width="100px;" alt="ke20"/>
       <br />
-      <sub><b>StreptoBordos</b></sub>
-    </a>
-    <br />💻
-  </td>
-</tr><tr>
-
-  <td align="center">
-    <a href="https://github.com/Krutika-Joshi">
-      <img src="https://avatars.githubusercontent.com/u/167503423?v=4" width="100px;" alt="Krutika-Joshi"/>
-      <br />
-      <sub><b>Krutika-Joshi</b></sub>
+      <sub><b>ke20</b></sub>
     </a>
     <br />💻
   </td>
   <td align="center">
-    <a href="https://github.com/iamanshikaa">
-      <img src="https://avatars.githubusercontent.com/u/235749231?v=4" width="100px;" alt="iamanshikaa"/>
+    <a href="https://github.com/KRISHNASAKTHIESWAR">
+      <img src="https://avatars.githubusercontent.com/u/158746099?v=4" width="100px;" alt="KRISHNASAKTHIESWAR"/>
       <br />
-      <sub><b>iamanshikaa</b></sub>
+      <sub><b>KRISHNASAKTHIESWAR</b></sub>
+    </a>
+    <br />💻
+  </td>
+  <td align="center">
+    <a href="https://github.com/arshiyank">
+      <img src="https://avatars.githubusercontent.com/u/227343491?v=4" width="100px;" alt="arshiyank"/>
+      <br />
+      <sub><b>arshiyank</b></sub>
     </a>
     <br />💻
   </td>
