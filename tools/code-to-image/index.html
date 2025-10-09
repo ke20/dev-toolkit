@@ -600,12 +600,12 @@ console.log(message);</textarea>
             const padding = parseInt(document.getElementById('padding').value);
             const borderRadius = parseInt(document.getElementById('borderRadius').value);
 
-            // Set font and measure text
+           
             ctx.font = `${fontSize}px 'Fira Code', monospace`;
             const lines = code.split('\n');
             const lineHeight = fontSize * 1.5;
             
-            // Calculate canvas size
+         
             let maxWidth = 0;
             lines.forEach(line => {
                 const width = ctx.measureText(line).width;
@@ -615,7 +615,7 @@ console.log(message);</textarea>
             canvas.width = maxWidth + (padding * 2);
             canvas.height = (lines.length * lineHeight) + (padding * 2);
 
-            // Draw background with border radius
+            
             ctx.fillStyle = bgColor;
             roundRect(ctx, 0, 0, canvas.width, canvas.height, borderRadius);
             ctx.fill();
@@ -645,7 +645,7 @@ console.log(message);</textarea>
         }
 
         function highlightSyntax(line, x, y, theme) {
-            // Simple syntax highlighting
+            
             const keywords = /\b(function|const|let|var|return|if|else|for|while|class|import|export|from|async|await|try|catch|def|print)\b/g;
             const strings = /(["'`])(?:(?=(\\?))\2.)*?\1/g;
             const comments = /(\/\/.*$|\/\*[\s\S]*?\*\/|#.*$)/g;
@@ -655,30 +655,30 @@ console.log(message);</textarea>
             let lastIndex = 0;
             const tokens = [];
 
-            // Find all tokens
+            
             let match;
             
-            // Comments
+           
             while ((match = comments.exec(line)) !== null) {
                 tokens.push({ start: match.index, end: match.index + match[0].length, type: 'comment', text: match[0] });
             }
 
-            // Strings
+         
             while ((match = strings.exec(line)) !== null) {
                 tokens.push({ start: match.index, end: match.index + match[0].length, type: 'string', text: match[0] });
             }
 
-            // Keywords
+          // Keywords
             while ((match = keywords.exec(line)) !== null) {
                 tokens.push({ start: match.index, end: match.index + match[0].length, type: 'keyword', text: match[0] });
             }
 
-            // Numbers
+         
             while ((match = numbers.exec(line)) !== null) {
                 tokens.push({ start: match.index, end: match.index + match[0].length, type: 'number', text: match[0] });
             }
 
-            // Functions
+        
             while ((match = functions.exec(line)) !== null) {
                 tokens.push({ start: match.index, end: match.index + match[1].length, type: 'function', text: match[1] });
             }
@@ -691,7 +691,7 @@ console.log(message);</textarea>
             lastIndex = 0;
 
             tokens.forEach(token => {
-                // Draw text before token
+                
                 if (token.start > lastIndex) {
                     const beforeText = line.substring(lastIndex, token.start);
                     ctx.fillStyle = theme.text;
@@ -699,7 +699,7 @@ console.log(message);</textarea>
                     currentX += ctx.measureText(beforeText).width;
                 }
 
-                // Draw token
+               
                 ctx.fillStyle = theme[token.type] || theme.text;
                 ctx.fillText(token.text, currentX, y);
                 currentX += ctx.measureText(token.text).width;
@@ -707,7 +707,7 @@ console.log(message);</textarea>
                 lastIndex = token.end;
             });
 
-            // Draw remaining text
+           
             if (lastIndex < line.length) {
                 const remainingText = line.substring(lastIndex);
                 ctx.fillStyle = theme.text;
