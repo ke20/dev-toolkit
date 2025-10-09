@@ -254,6 +254,8 @@ Thanks goes to these wonderful people:
     </a>
     <br />💻
   </td>
+</tr><tr>
+
   <td align="center">
     <a href="https://github.com/Athting">
       <img src="https://avatars.githubusercontent.com/u/149139084?v=4" width="100px;" alt="Athting"/>
