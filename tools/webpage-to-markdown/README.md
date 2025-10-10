@@ -23,6 +23,19 @@ A powerful tool that converts any webpage content into clean, readable Markdown 
 3. The converted Markdown appears in the output section
 4. Copy the result using the Copy button or `Ctrl/Cmd + C`
 
+![Tool Interface](screenshots/tool-interface.png)
+
+#### Step-by-Step Guide
+
+1. **Enter URL**
+   ![URL Input](screenshots/url-input.png)
+
+2. **Converting Process**
+   ![Conversion Process](screenshots/conversion-process.png)
+
+3. **View Results**
+   ![Conversion Result](screenshots/conversion-result.png)
+
 ### Keyboard Shortcuts
 
 - `Ctrl/Cmd + Enter`: Convert webpage
@@ -135,6 +148,8 @@ The tool handles various error cases gracefully:
 - 📭 Empty or invalid content responses
 - 🏗️ Malformed HTML structures
 
+![Error Handling Example](screenshots/error-handling.png)
+
 ## 📝 Notes and Limitations
 
 - Some websites may block proxy access or require authentication
@@ -142,6 +157,12 @@ The tool handles various error cases gracefully:
 - Some complex layouts or interactive elements might require manual cleanup
 - Very large pages may take longer to process
 - Some websites may rate-limit or block automated access
+
+### Mobile Responsiveness
+
+The tool is fully responsive and works great on mobile devices:
+
+![Mobile View](screenshots/mobile-view.png)
 
 ## 🤝 Contributing
 

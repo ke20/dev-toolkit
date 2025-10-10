@@ -140,21 +140,65 @@ document.addEventListener('DOMContentLoaded', function() {
             convertBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Converting...';
             hideError();
 
-            // Fetch webpage content using proxy API
-            const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
-            const response = await fetch(proxyUrl);
-            if (!response.ok) {
-                throw new Error('Failed to fetch webpage content');
+            // Fetch webpage content using proxy API with fallbacks
+            const proxies = [
+                {
+                    url: (targetUrl) => `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`,
+                    handler: async (response) => {
+                        const data = await response.json();
+                        return data.contents;
+                    }
+                },
+                {
+                    url: (targetUrl) => `https://api.scraperapi.com/scrape?url=${encodeURIComponent(targetUrl)}`,
+                    handler: async (response) => await response.text()
+                },
+                {
+                    url: (targetUrl) => `https://proxy.scrapeops.io/v1/?api_key=free-trial&url=${encodeURIComponent(targetUrl)}`,
+                    handler: async (response) => await response.text()
+                }
+            ];
+
+            let content = null;
+            let lastError = null;
+
+            for (const proxy of proxies) {
+                try {
+                    const proxyUrl = proxy.url(url);
+                    const response = await fetch(proxyUrl);
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const rawContent = await proxy.handler(response);
+                    if (!rawContent) {
+                        throw new Error('No content received');
+                    }
+
+                    content = rawContent;
+                    break; // Successfully got content, exit loop
+                } catch (error) {
+                    console.warn(`Proxy attempt failed:`, error);
+                    lastError = error;
+                    continue; // Try next proxy
+                }
             }
 
-            const data = await response.json();
-            if (!data.contents) {
-                throw new Error('No content received from the webpage');
+            if (!content) {
+                throw new Error(
+                    'Unable to fetch webpage content. This might be because:\n' +
+                    '1. The website blocks proxy access\n' +
+                    '2. The website requires authentication\n' +
+                    '3. The website has strict security policies\n\n' +
+                    'Try with a different webpage or check if the URL is accessible directly.\n\n' +
+                    'Last error: ' + (lastError?.message || 'Unknown error')
+                );
             }
 
             // Parse and clean HTML
             const parser = new DOMParser();
-            const doc = parser.parseFromString(data.contents, 'text/html');
+            const doc = parser.parseFromString(content, 'text/html');
             const mainContent = cleanupContent(doc);
 
             // Get page title
@@ -233,8 +277,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Error handling
     function showError(message) {
-        errorMessage.textContent = message;
+        errorMessage.innerHTML = message.replace(/\n/g, '<br>');
         errorMessage.style.display = 'block';
+        errorMessage.style.whiteSpace = 'pre-line';
+        errorMessage.style.textAlign = 'left';
+        errorMessage.style.padding = '1rem';
     }
 
     function hideError() {

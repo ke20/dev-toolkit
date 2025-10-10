@@ -18,6 +18,9 @@
         .tool-header {
             text-align: center;
             margin-bottom: 3rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         .tool-title {
@@ -173,10 +176,15 @@
                 padding: 1rem;
             }
 
+            .tool-header {
+                margin-top: 4rem;  /* Increased top margin to avoid overlap */
+            }
+
             .back-button {
                 top: 1rem;
                 left: 1rem;
                 padding: 0.5rem 1rem;
+                z-index: 2;  /* Ensure back button stays above other content */
             }
 
             .input-group {
