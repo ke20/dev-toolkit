@@ -1,5 +1,6 @@
 // Modern Dev Toolkit JavaScript
 // Interactive elements and animations
+// Updated: 2024-12-19 - Added Credit Card Validator tool
 
 // Global error handling
 window.addEventListener('error', function (e) {
@@ -822,6 +823,14 @@ function initAdvancedSearch() {
       keywords: ["text", "extraction", "pdf", "word", "image"],
       icon: "fas fa-file-alt",
       url: "tools/text-extractor/index.html",
+    },
+    {
+      name: "Credit Card Validator",
+      description: "Validate credit card numbers using the Luhn algorithm. Check if a card number is valid without storing any data - completely secure and private.",
+      category: "utility",
+      keywords: ["credit", "card", "validator", "validation", "luhn", "algorithm", "security", "payment", "check", "verify"],
+      icon: "fas fa-credit-card",
+      url: "tools/credit-card-validator/index.html",
     }
   ];
 
@@ -848,6 +857,14 @@ function initAdvancedSearch() {
 
   function handleSearch(query) {
     const results = fuzzySearch(query, toolsDatabase);
+    
+    // Debug logging
+    if (query.toLowerCase().includes('credit')) {
+      console.log('Search query:', query);
+      console.log('Search results:', results);
+      console.log('Credit Card Validator in results:', results.find(r => r.name === 'Credit Card Validator'));
+    }
+    
     updateToolDisplay(results, query);
 
     if (query.length > 0) {
@@ -1003,9 +1020,18 @@ function initAdvancedSearch() {
         (result) => result.name.toLowerCase() === toolName.toLowerCase()
       );
 
+      // Debug logging for Credit Card Validator
+      if (toolName === 'Credit Card Validator') {
+        console.log('Credit Card Validator card found:', card);
+        console.log('Query:', query);
+        console.log('Results:', results);
+        console.log('Is match:', isMatch);
+      }
+
       if (query.length === 0 || isMatch) {
         card.style.display = "flex";
         card.style.animation = "fadeInUp 0.5s ease-out";
+        visibleCount++;
       } else {
         card.style.display = "none";
         card.classList.add('hidden');
