@@ -114,6 +114,10 @@
                 <a href="#contribute" class="nav-link">Contribute</a>
                 <a href="#creator" class="nav-link">Creator</a>
                 <!-- Theme toggle removed per request -->
+                <button id="theme-toggle" class="nav-link theme-toggle-btn" aria-label="Toggle light and dark theme">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
                 <a href="https://github.com/heysaiyad/dev-toolkit" target="_blank" class="nav-link github-link"
                     aria-label="View source code on GitHub">
                     <i class="fab fa-github" aria-hidden="true"></i>
@@ -154,6 +158,10 @@
                     <a href="tools/word-counter/index.html" class="sidebar-tool-link" data-category="text">
                         <i class="fas fa-font"></i>
                         <span>Word Counter</span>
+                    </a>
+                    <a href="tools/api-fetch-tester/index.html" class="sidebar-tool-link" data-category="utility">
+                        <i class="fas fa-satellite-dish"></i>
+                        <span>API Fetch Tester</span>
                     </a>
                 </div>
             </div>
@@ -286,7 +294,6 @@
                 </div>
             </div>
         </div>
-
         <div class="sidebar-footer">
             <a href="#contribute" class="sidebar-contribute-btn">
                 <i class="fas fa-plus"></i>
@@ -332,7 +339,7 @@
             </p>
             <div class="hero-stats">
                 <div class="stat">
-                    <span class="stat-number" data-stat="tools" data-target="15">0</span>
+                    <span class="stat-number" data-stat="tools" data-target="16">0</span>
                     <span class="stat-label">Tools Available</span>
                 </div>
                 <div class="stat">
@@ -435,7 +442,7 @@
                     <div class="search-suggestions" id="searchSuggestions"></div>
                 </div>
                 <div class="search-stats" id="searchStats">
-                    <span id="resultCount">15</span> tools found
+                    <span id="resultCount">16</span> tools found
                 </div>
             </div>
 
@@ -466,18 +473,14 @@
                     Utilities
                 </button>
             </div>
+
             <!--Github Profile Card generator-->
             <div id="tools-grid" class="tools-grid">
                 <a href="tools/character-case-checker/index.html" class="tool-card" data-category="text">
                     <div class="tool-icon">
-                        <i class="fas fa-font-case"></i> 
+                        <i class="fas fa-font-case"></i>
                     </div>
                     <div class="tool-content">
-                        <h3 class="tool-title">Character Case Checker</h3>
-                        <p class="tool-description">Check if a string is uppercase, lowercase, or mixed case.</p>
-                    <div class="tool-tags">
-                        <span class="tag">Text</span>
-                        <span class="tag">Utility</span>
                         <h3 class="tool-title">GitHub Profile Card</h3>
                         <p class="tool-description">
                             Generate a stylish, shareable GitHub profile card with avatar, bio, and stats.
@@ -490,11 +493,29 @@
                     <div class="tool-arrow">
                         <i class="fas fa-arrow-right"></i>
                     </div>
-                </div>
-                <div class="tool-arrow">
-                    <i class="fas fa-arrow-right"></i>
-                </div>
-</a>
+                </a>
+
+                <!-- Form-builder -->
+                <a href="tools/form-builder/index.html" class="tool-card" data-category="utility">
+                    <div class="tool-icon">
+                        <i class="fas fa-wpforms"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3 class="tool-title">Form Builder</h3>
+                        <p class="tool-description">
+                            Create custom forms with an intuitive drag-and-drop interface. Build forms visually and get
+                            clean HTML code instantly.
+                        </p>
+                        <div class="tool-tags">
+                            <span class="tag">Form</span>
+                            <span class="tag">Builder</span>
+                            <span class="tag">HTML</span>
+                        </div>
+                    </div>
+                    <div class="tool-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
 
                 <!--Discount Calculator-->
                 <a href="tools/SimpleDiscountCalculator/index.html" class="tool-card" data-category="utility">
@@ -555,7 +576,7 @@
                 </a>
 
                 <!-- Text to ASCII Value Converter -->
-                 <a href="tools/text-to-ascii-converter/index.html" class="tool-card" data-category="text">
+                <a href="tools/text-to-ascii-converter/index.html" class="tool-card" data-category="text">
                     <div class="tool-icon">
                         <i class="fas fa-font"></i>
                     </div>
@@ -572,9 +593,6 @@
                         <i class="fas fa-arrow-right"></i>
                     </div>
                 </a>
-                
-
-
                 <!-- Line Sorter & Unique Extractor -->
                 <a href="tools/line-sorter-unique/index.html" class="tool-card" data-category="text">
                     <div class="tool-icon">
@@ -594,7 +612,6 @@
                         <i class="fas fa-arrow-right"></i>
                     </div>
                 </a>
-
                 <!-- Lorem Ipsum Generator -->
                 <a href="tools/lorem-ipsum-generator/index.html" class="tool-card" data-category="text">
                     <div class="tool-icon">
@@ -648,6 +665,26 @@
                         <div class="tool-tags">
                             <span class="tag">JSON</span>
                             <span class="tag">Format</span>
+                        </div>
+                    </div>
+                    <div class="tool-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+
+                <!-- API Fetch Tester -->
+                <a href="tools/api-fetch-tester/index.html" class="tool-card" data-category="utility" data-featured="true">
+                    <div class="tool-icon">
+                        <i class="fas fa-satellite-dish"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3 class="tool-title">API Fetch Tester</h3>
+                        <p class="tool-description">Test REST API endpoints with ease. Send GET, POST, PUT, PATCH, and DELETE requests, view responses with beautiful formatting, and copy as cURL commands.</p>
+                        <div class="tool-tags">
+                            <span class="tag">API</span>
+                            <span class="tag">Testing</span>
+                            <span class="tag">REST</span>
+                            <span class="tag">Featured</span>
                         </div>
                     </div>
                     <div class="tool-arrow">
@@ -739,7 +776,6 @@
                     </div>
                 </a>
 
-
                 <a href="tools/date-difference/index.html" class="tool-card" data-category="date">
                     <div class="tool-icon">
                         <i class="fas fa-calendar-alt"></i>
@@ -800,6 +836,7 @@
                         <i class="fas fa-arrow-right"></i>
                     </div>
                 </a>
+
                 <!-- Random Number Generator -->
                 <a href="tools/random-number-generator/index.html" class="tool-card" data-category="utility">
                     <div class="tool-icon">
@@ -982,8 +1019,6 @@
                     </div>
                 </a>
 
-
-
                 <!-- QR Code Generator -->
                 <a href="tools/qr-code-generator/index.html" class="tool-card" data-category="utility">
                     <div class="tool-icon">
@@ -1003,7 +1038,6 @@
                         <i class="fas fa-arrow-right"></i>
                     </div>
                 </a>
-
 
                 <!-- Geolocation & Maps -->
                 <a href="tools/geolocation/index.html" class="tool-card" data-category="utility">
@@ -1042,26 +1076,6 @@
                         <i class="fas fa-arrow-right"></i>
                     </div>
                 </a>
-
-                <!-- HEX-to-light-dark-shades-generator -->
-                <a href="tools/HEX-to-shades-generator/index.html" class="tool-card" data-category="design">
-                    <div class="tool-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <div class="tool-content">
-                        <h3 class="tool-title">ShadyLab - Color Shade Generator</h3>
-                        <p class="tool-description">Generate elegant lighter or darker shades from any HEX color with smooth animations and CSS export.</p>
-                        <div class="tool-tags">
-                            <span class="tag">Color</span>
-                            <span class="tag">Design</span>
-                            <span class="tag">Generator</span>
-                        </div>
-                    </div>
-                    <div class="tool-arrow">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
-                </a>
-                
                 <!-- UUID Generator -->
                 <a href="tools/uuid-generator/index.html" class="tool-card" data-category="utility">
                     <div class="tool-icon">
@@ -1122,7 +1136,6 @@
                         <i class="fas fa-arrow-right"></i>
                     </div>
                 </a>
-
                 <!-- Number Squarer/Cuber -->
                 <a href="tools/number-squarer-cuber/index.html" class="tool-card" data-category="utility">
                     <div class="tool-icon">
@@ -1343,28 +1356,6 @@
                                 </div>
                             </a>
 
-                            <!-- Morse Code Translator -->
-                            <a href="tools/morse-code-translator/index.html" class="tool-card" data-category="text">
-                                <div class="tool-icon">
-                                    <i class="fas fa-wave-square"></i>
-                                </div>
-                                <div class="tool-content">
-                                    <h3 class="tool-title">Morse Code Translator</h3>
-                                    <p class="tool-description">
-                                        Converts text to Morse code and Morse code back to text — supports letters,
-                                        numbers, and punctuation.
-                                    </p>
-                                    <div class="tool-tags">
-                                        <span class="tag">Text</span>
-                                        <span class="tag">Utility</span>
-                                    </div>
-                                </div>
-                                <div class="tool-arrow">
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </a>
-
-
                             <!-- Even Odd Checker -->
                             <a href="tools/even-odd-checker/index.html" class="tool-card" data-category="utility">
                                 <div class="tool-icon">
@@ -1583,7 +1574,6 @@
                                     <i class="fas fa-arrow-right"></i>
                                 </div>
                             </a>
-
                             <!-- File Encryptor (AES-GCM) -->
                             <a href="tools/file-encryptor/index.html" class="tool-card" data-category="utility">
                                 <div class="tool-icon">
@@ -1605,45 +1595,27 @@
                                     <i class="fas fa-arrow-right"></i>
                                 </div>
                             </a>
-                          <!-- Morse Code Translator -->
-<a href="tools/morse-code-translator/index.html" class="tool-card" data-category="text">
-    <div class="tool-icon">
-        <i class="fas fa-code"></i>
-    </div>
-    <div class="tool-content">
-        <h3 class="tool-title">Morse Code Translator</h3>
-        <p class="tool-description">
-            Convert text to Morse code and Morse code back to text instantly.
-        </p>
-        <div class="tool-tags">
-            <span class="tag">Translator</span>
-            <span class="tag">Text</span>
-        </div>
-    </div>
-    <div class="tool-arrow">
-        <i class="fas fa-arrow-right"></i>
-    </div>
-</a>
-                <!-- Internet Speed Checker -->
-                <a href="tools/internet-speed/index.html" class="tool-card" data-category="utility">
-                    <div class="tool-icon">
-                        <i class="fas fa-compress"></i>
-                    </div>
-                    <div class="tool-content">
-                        <h3 class="tool-title">Internet Spped Check</h3>
-                        <p class="tool-description">A simple and fast internet speed testing tool built with HTML, CSS,
-                            and JavaScript to measure your connection's download, upload, and ping."</p>
-                        <div class="tool-tags">
-                            <span class="tag">Tool</span>
-                            <span class="tag">Internet Speed</span>
-                            <span class="tag">Web</span>
-                        </div>
-                    </div>
-                    <div class="tool-arrow">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
-                </a>
-                
+                            <!-- Internet Speed Checker -->
+                            <a href="tools/internet-speed/index.html" class="tool-card" data-category="utility">
+                                <div class="tool-icon">
+                                    <i class="fas fa-compress"></i>
+                                </div>
+                                <div class="tool-content">
+                                    <h3 class="tool-title">Internet Spped Check</h3>
+                                    <p class="tool-description">A simple and fast internet speed testing tool built with
+                                        HTML, CSS,
+                                        and JavaScript to measure your connection's download, upload, and ping."</p>
+                                    <div class="tool-tags">
+                                        <span class="tag">Tool</span>
+                                        <span class="tag">Internet Speed</span>
+                                        <span class="tag">Web</span>
+                                    </div>
+                                </div>
+                                <div class="tool-arrow">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </a>
+
 
                             <!-- Color Contrast Checker -->
                             <a href="tools/color-contrast-checker/index.html" class="tool-card" data-category="utility">
@@ -1868,6 +1840,29 @@
                                                 <i class="fas fa-arrow-right"></i>
                                             </div>
                                         </a>
+                                        <!-- String-Length_counter -->
+                                        <a href="tools/string-length-counter/index.html" class="tool-card"
+                                            data-category="utility">
+                                            <div class="tool-icon">
+                                                <i class="fas fa-text-width"></i>
+                                            </div>
+                                            <div class="tool-content">
+                                                <h3 class="tool-title">String Length Counter</h3>
+                                                <p class="tool-description">
+                                                    A simple tool to count the number of characters in any text input.
+                                                </p>
+                                                <div class="tool-tags">
+                                                    <span class="tag">Text</span>
+                                                    <span class="tag">Utility</span>
+
+                                                </div>
+                                            </div>
+                                            <div class="tool-arrow">
+                                                <i class="fas fa-arrow-right"></i>
+                                            </div>
+                                        </a>
+
+
 
                                         <!-- Add Tool Card -->
                                         <div class="tool-card add-tool-card" data-category="all">
