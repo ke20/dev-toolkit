@@ -822,6 +822,14 @@ function initAdvancedSearch() {
       keywords: ["text", "extraction", "pdf", "word", "image"],
       icon: "fas fa-file-alt",
       url: "tools/text-extractor/index.html",
+    },
+    {
+      name: "Web Scraper",
+      description: "Extract links and images from any website using our powerful web scraper. Input a URL and get organized results with detailed statistics and export options.",
+      category: "utility",
+      keywords: ["web", "scraper", "scraping", "parser", "links", "images", "extract", "crawl", "spider", "url", "website", "api", "cors"],
+      icon: "fas fa-spider",
+      url: "tools/web-scraper/index.html",
     }
   ];
 
@@ -1006,6 +1014,8 @@ function initAdvancedSearch() {
       if (query.length === 0 || isMatch) {
         card.style.display = "flex";
         card.style.animation = "fadeInUp 0.5s ease-out";
+        card.classList.remove('hidden');
+        visibleCount++;
       } else {
         card.style.display = "none";
         card.classList.add('hidden');
