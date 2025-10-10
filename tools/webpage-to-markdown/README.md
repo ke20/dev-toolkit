@@ -148,8 +148,6 @@ The tool handles various error cases gracefully:
 - 📭 Empty or invalid content responses
 - 🏗️ Malformed HTML structures
 
-![Error Handling Example](screenshots/error-handling.png)
-
 ## 📝 Notes and Limitations
 
 - Some websites may block proxy access or require authentication
