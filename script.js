@@ -1,6 +1,7 @@
 // Modern Dev Toolkit JavaScript
 // Interactive elements and animations
 // Updated: Image Performance Audit tool integration - v1.1
+// Updated: 2024-12-19 - Added Credit Card Validator tool
 
 // Global error handling
 window.addEventListener('error', function (e) {
@@ -29,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
     initSmoothScrolling();
     initParallaxEffect();
     initAdvancedSearch();
-    initThemeSystem();
     initPerformanceMonitoring();
     initMobileMenu();
     initSidebar();
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initMicroAnimations();
     initSectionAnimations();
     initBackToTop();
-    initDarkModeToggle();
+  // Theme system removed per user request
 
     // Hide loading screen after initialization
     setTimeout(hideLoadingScreen, 1500);
@@ -90,33 +90,7 @@ function hideLoadingScreen() {
   }
 }
 // Dark Mode Toggle Functionality
-function initDarkModeToggle() {
-    const themeToggleButton = document.getElementById('theme-toggle');
-    if (!themeToggleButton) return;
-
-    // Function to apply the theme based on the mode
-    const applyTheme = (theme) => {
-        if (theme === 'light') {
-            document.body.classList.add('light-mode');
-        } else {
-            document.body.classList.remove('light-mode');
-        }
-    };
-    
-    // Check for saved user preference on load
-    // Use 'ui-mode' to not conflict with the existing theme system
-    const savedTheme = localStorage.getItem('ui-mode') || 'dark';
-    applyTheme(savedTheme);
-
-    // Add event listener for the toggle button
-    themeToggleButton.addEventListener('click', () => {
-        const isLight = document.body.classList.contains('light-mode');
-        const newTheme = isLight ? 'dark' : 'light';
-        
-        applyTheme(newTheme);
-        localStorage.setItem('ui-mode', newTheme);
-    });
-}
+// Theme functions removed
 // Typing Effect Animation with performance optimization
 function initTypingEffect() {
   const typingText = document.querySelector(".typing-text");
@@ -831,6 +805,12 @@ function initAdvancedSearch() {
       keywords: ["image", "performance", "audit", "seo", "optimization", "alt", "webp", "avif", "analysis", "webpage", "performace", "images", "speed", "lighthouse", "web", "site", "check", "analyze"],
       icon: "fas fa-chart-line",
       url: "tools/image-performance-audit/index.html",
+      name: "Credit Card Validator",
+      description: "Validate credit card numbers using the Luhn algorithm. Check if a card number is valid without storing any data - completely secure and private.",
+      category: "utility",
+      keywords: ["credit", "card", "validator", "validation", "luhn", "algorithm", "security", "payment", "check", "verify"],
+      icon: "fas fa-credit-card",
+      url: "tools/credit-card-validator/index.html",
     }
   ];
 
@@ -871,6 +851,13 @@ function initAdvancedSearch() {
     // Debug: Check if it's in the results
     const imageAuditInResults = results.find(tool => tool.name === "Image Performance Audit");
     console.log("Image Performance Audit in results:", imageAuditInResults);
+    
+    // Debug logging
+    if (query.toLowerCase().includes('credit')) {
+      console.log('Search query:', query);
+      console.log('Search results:', results);
+      console.log('Credit Card Validator in results:', results.find(r => r.name === 'Credit Card Validator'));
+    }
     
     updateToolDisplay(results, query);
 
@@ -1054,6 +1041,12 @@ function initAdvancedSearch() {
       // Debug: Check if this is the Image Performance Audit tool card
       if (toolName === "Image Performance Audit") {
         console.log(`Image Performance Audit card - Query: "${query}", IsMatch: ${isMatch}, Results:`, results.map(r => r.name));
+      // Debug logging for Credit Card Validator
+      if (toolName === 'Credit Card Validator') {
+        console.log('Credit Card Validator card found:', card);
+        console.log('Query:', query);
+        console.log('Results:', results);
+        console.log('Is match:', isMatch);
       }
 
       if (query.length === 0 || isMatch) {

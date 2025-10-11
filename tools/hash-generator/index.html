@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMAC Hash Generator (SHA-256) - DevToolkit</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <meta name="description" content="Generate HMAC (SHA-256) hashes from a message and secret key in your browser.">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <a href="../../index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        Back to Tools
+    </a>
+
+    <div class="tool-container">
+        <!-- Header -->
+        <div class="tool-header">
+            <h1 class="tool-title">HMAC Hash Generator</h1>
+            <p class="tool-subtitle">
+                Create a Hash-based Message Authentication Code using SHA-256.<br>Enter your message and secret key to generate the HMAC securely in your browser.
+            </p>
+        </div>
+
+        <!-- Input Section -->
+        <div class="hmac-input-section">
+            <div class="hmac-rows">
+                <div class="hmac-group">
+                    <label class="hmac-label"><i class="fas fa-comment-dots"></i> Message</label>
+                    <textarea id="message-input" class="hmac-textarea" rows="4" placeholder="Enter message..."></textarea>
+                </div>
+                <div class="hmac-group">
+                    <label class="hmac-label"><i class="fas fa-key"></i> Secret Key</label>
+                    <input id="secret-input" type="text" class="hmac-input" placeholder="Enter secret key...">
+                </div>
+            </div>
+            <div class="hmac-rows">
+                <div class="hmac-group">
+                    <label class="hmac-label"><i class="fas fa-sliders"></i> Output Format</label>
+                    <div class="hmac-options">
+                        <label class="hmac-option">
+                            <input type="radio" name="output-format" value="hex" checked>
+                            <span>Hex</span>
+                        </label>
+                        <label class="hmac-option">
+                            <input type="radio" name="output-format" value="base64">
+                            <span>Base64</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Generate Button -->
+        <div class="hmac-convert">
+            <button class="hmac-btn-generate" id="generate-btn">
+                <i class="fas fa-shield-alt"></i>
+                Generate HMAC
+            </button>
+        </div>
+
+        <!-- Output Section -->
+        <div class="hmac-output">
+            <div class="hmac-output-label">
+                <i class="fas fa-fingerprint"></i>
+                HMAC (SHA-256)
+            </div>
+            <div id="hmac-output" class="hmac-result">Enter a message and secret key, then click Generate HMAC.</div>
+            <button class="hmac-btn-copy" id="copy-btn" disabled>
+                <i class="fas fa-copy"></i>
+                Copy Result
+            </button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

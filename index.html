@@ -113,6 +113,7 @@
                 <a href="#tools" class="nav-link">Tools</a>
                 <a href="#contribute" class="nav-link">Contribute</a>
                 <a href="#creator" class="nav-link">Creator</a>
+                <!-- Theme toggle removed per request -->
                 <button id="theme-toggle" class="nav-link theme-toggle-btn" aria-label="Toggle light and dark theme">
                     <i class="fas fa-sun"></i>
                     <i class="fas fa-moon"></i>
@@ -254,6 +255,10 @@
                     <a href="tools/uuid-generator/index.html" class="sidebar-tool-link" data-category="utility">
                         <i class="fas fa-fingerprint"></i>
                         <span>UUID Generator</span>
+                    </a>
+                    <a href="tools/credit-card-validator/index.html" class="sidebar-tool-link" data-category="utility">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Credit Card Validator</span>
                     </a>
                     <a href="tools/unix-timestamp-converter/index.html" class="sidebar-tool-link"
                         data-category="utility">
@@ -442,6 +447,7 @@
                 </div>
                 <div class="search-stats" id="searchStats">
                     <span id="resultCount">68</span> tools found
+                    <span id="resultCount">17</span> tools found
                 </div>
             </div>
 
@@ -516,6 +522,28 @@
                     </div>
                 </a>
 
+                <!-- HMAC Hash Generator -->
+                <a href="tools/hash-generator/index.html" class="tool-card" data-category="utility">
+                    <div class="tool-icon">
+                        <i class="fas fa-hashtag"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3 class="tool-title">HMAC Hash Generator</h3>
+                        <p class="tool-description">
+                            Create a Hash-based Message Authentication Code using SHA-256.
+                            Enter your message and secret key to generate the HMAC securely in your browser.
+                        </p>
+                        <div class="tool-tags">
+                            <span class="tag">HMAC</span>
+                            <span class="tag">Hash</span>
+                            <span class="tag">SHA-256</span>
+                        </div>
+                    </div>
+                    <div class="tool-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+
                 <!--Discount Calculator-->
                 <a href="tools/SimpleDiscountCalculator/index.html" class="tool-card" data-category="utility">
                     <div class="tool-icon">
@@ -536,6 +564,25 @@
                 </a>
 
                 <!-- Word Counter -->
+                <!-- Webpage to Markdown -->
+                <a href="tools/webpage-to-markdown/index.html" class="tool-card" data-category="converter">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3 class="tool-title">Webpage to Markdown</h3>
+                        <p class="tool-description">Convert any webpage into clean, readable Markdown format. Perfect for content creation, documentation, and note-taking.</p>
+                        <div class="tool-tags">
+                            <span class="tag">Converter</span>
+                            <span class="tag">Markdown</span>
+                            <span class="tag">Web</span>
+                        </div>
+                    </div>
+                    <div class="tool-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+
                 <a href="tools/word-counter/index.html" class="tool-card" data-category="text" data-featured="true">
                     <div class="tool-icon">
                         <i class="fas fa-font"></i>
@@ -555,6 +602,25 @@
                         <i class="fas fa-arrow-right"></i>
                     </div>
                 </a>
+
+                <!-- Word Frequency Analyzer -->
+                <a href="tools/word-frequency-analyzer/index.html" class="tool-card" data-category="text">
+                    <div class="tool-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3 class="tool-title">Word Frequency Analyzer</h3>
+                        <p class="tool-description">Analyze pasted text to find the most frequent words. Includes stopword filtering and CSV export.</p>
+                        <div class="tool-tags">
+                            <span class="tag">Text</span>
+                            <span class="tag">Analysis</span>
+                        </div>
+                    </div>
+                    <div class="tool-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+
                 <!-- Text to ASCII Value Converter -->
                 <a href="tools/text-to-ascii-converter/index.html" class="tool-card" data-category="text">
                     <div class="tool-icon">
@@ -586,6 +652,25 @@
                             <span class="tag">Text</span>
                             <span class="tag">Sort</span>
                             <span class="tag">Filter</span>
+                        </div>
+                    </div>
+                    <div class="tool-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+
+                <!-- Advanced Text Analyzer -->
+                <a href="tools/text-analyzer/index.html" class="tool-card" data-category="text">
+                    <div class="tool-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3 class="tool-title">Advanced Text Analyzer</h3>
+                        <p class="tool-description">Comprehensive text analysis with detailed statistics including word count, sentence count, paragraph count, reading time, and average metrics for in-depth content evaluation.</p>
+                        <div class="tool-tags">
+                            <span class="tag">Text</span>
+                            <span class="tag">Analytics</span>
+                            <span class="tag">Statistics</span>
                         </div>
                     </div>
                     <div class="tool-arrow">
@@ -728,6 +813,42 @@
                             <span class="tag">Timer</span>
                             <span class="tag">Stopwatch</span>
                             <span class="tag">Productivity</span>
+                        </div>
+                    </div>
+                    <div class="tool-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+
+                <!-- Pomodoro Timer -->
+                <a href="tools/pomodoro-timer/index.html" class="tool-card" data-category="utility">
+                    <div class="tool-icon">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3 class="tool-title">Pomodoro Timer</h3>
+                        <p class="tool-description">25-minute work sessions and 5-minute breaks with Start, Pause, Reset controls and an audible alert to boost your focus.</p>
+                        <div class="tool-tags">
+                            <span class="tag">Productivity</span>
+                            <span class="tag">Timer</span>
+                        </div>
+                    </div>
+                    <div class="tool-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+
+                <!-- Hotkeys Tester -->
+                <a href="tools/hotkeys-tester/index.html" class="tool-card" data-category="utility">
+                    <div class="tool-icon">
+                        <i class="fas fa-keyboard"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3 class="tool-title">Hotkeys Tester</h3>
+                        <p class="tool-description">Detect and display complex keyboard shortcuts (e.g., Ctrl+Shift+K). Useful for testing which shortcuts are available in the browser or OS.</p>
+                        <div class="tool-tags">
+                            <span class="tag">Keyboard</span>
+                            <span class="tag">Hotkeys</span>
                         </div>
                     </div>
                     <div class="tool-arrow">
@@ -1012,6 +1133,25 @@
                         <div class="tool-tags">
                             <span class="tag">QR Code</span>
                             <span class="tag">Generator</span>
+                        </div>
+                    </div>
+                    <div class="tool-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+
+                <!-- Cron Expression Translator -->
+                <a href="tools/cron-translator/index.html" class="tool-card" data-category="utility">
+                    <div class="tool-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3 class="tool-title">Cron Expression Translator</h3>
+                        <p class="tool-description">Translate a 5-field cron expression into a human-readable description (e.g., <code>*/5 * * * *</code> → "Every 5 minutes").</p>
+                        <div class="tool-tags">
+                            <span class="tag">Cron</span>
+                            <span class="tag">Scheduler</span>
+                            <span class="tag">Utility</span>
                         </div>
                     </div>
                     <div class="tool-arrow">
@@ -1398,6 +1538,49 @@
                                 </div>
                             </a>
 
+                <!-- Number Base Converter -->
+                <a href="tools/number-base-converter/index.html" class="tool-card" data-category="utility">
+                    <div class="tool-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3 class="tool-title">Number Base Converter</h3>
+                        <p class="tool-description">
+                            A simple tool to convert numbers between Decimal, Binary, Octal, and Hexadecimal.
+                        </p>
+                        <div class="tool-tags">
+                            <span class="tag">Binary</span>
+                            <span class="tag">Decimal</span>
+                            <span class="tag">Octal</span>
+                            <span class="tag">Hexadecimal</span>
+                        </div>
+                    </div>
+                    <div class="tool-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+
+                                <!-- Favicon Preview Tool -->
+                <a href="tools/favicon-preview-tool/index.html" class="tool-card" data-category="design">
+                    <div class="tool-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3 class="tool-title">Favicon Preview Tool</h3>
+                        <p class="tool-description">
+                            Upload an image and preview how it looks as a favicon in a mock browser tab.
+                        </p>
+                        <div class="tool-tags">
+                            <span class="tag">Favicon</span>
+                            <span class="tag">Preview</span>
+                            <span class="tag">Design</span>
+                        </div>
+                    </div>
+                    <div class="tool-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+
                             <!-- Number Base Converter -->
                             <a href="tools/number-base-converter/index.html" class="tool-card" data-category="utility">
                                 <div class="tool-icon">
@@ -1753,6 +1936,27 @@
                                             </div>
                                         </a>
 
+                                        <!-- Credit Card Validator -->
+                                        <a href="tools/credit-card-validator/index.html" class="tool-card"
+                                            data-category="utility">
+                                            <div class="tool-icon">
+                                                <i class="fas fa-credit-card"></i>
+                                            </div>
+                                            <div class="tool-content">
+                                                <h3 class="tool-title">Credit Card Validator</h3>
+                                                <p class="tool-description">Validate credit card numbers using the Luhn algorithm. 
+                                                    Check if a card number is valid without storing any data - completely secure and private.</p>
+                                                <div class="tool-tags">
+                                                    <span class="tag">Validation</span>
+                                                    <span class="tag">Security</span>
+                                                    <span class="tag">Algorithm</span>
+                                                </div>
+                                            </div>
+                                            <div class="tool-arrow">
+                                                <i class="fas fa-arrow-right"></i>
+                                            </div>
+                                        </a>
+
                                         <!-- Internet Speed Checker -->
                                         <a href="tools/internet-speed/index.html" class="tool-card"
                                             data-category="utility">
@@ -1857,6 +2061,26 @@
                                                     <span class="tag">Text</span>
                                                     <span class="tag">Utility</span>
 
+                                                </div>
+                                            </div>
+                                            <div class="tool-arrow">
+                                                <i class="fas fa-arrow-right"></i>
+                                            </div>
+                                        </a>
+                                        <!-- percentage-calculator -->
+                                        <a href="tools/percentage-calculator/index.html" class="tool-card"
+                                            data-category="utility">
+                                            <div class="tool-icon">
+                                                <i class="fas fa-percentage"></i>
+                                            </div>
+                                            <div class="tool-content">
+                                                <h3 class="tool-title">Percentage Calculator</h3>
+                                                <p class="tool-description">
+                                                    A simple percentage calculator to find percentage of a number.
+                                                </p>
+                                                <div class="tool-tags">
+                                                    <span class="tag">Math</span>
+                                                    <span class="tag">Utility</span>
                                                 </div>
                                             </div>
                                             <div class="tool-arrow">
@@ -2046,7 +2270,7 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=20241219"></script>
 
 </body>
 

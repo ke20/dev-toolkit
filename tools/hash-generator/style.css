@@ -1,0 +1,173 @@
+.tool-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.tool-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.tool-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+}
+
+.tool-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hmac-input-section {
+    background: var(--bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+.hmac-input-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-primary);
+}
+.hmac-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.hmac-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.hmac-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+.hmac-label i { color: var(--primary-color); }
+.hmac-textarea,
+.hmac-input {
+    padding: 0.75rem 1rem;
+    background: var(--bg-primary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+.hmac-textarea:focus,
+.hmac-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.2);
+}
+.hmac-options { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hmac-option { display: flex; align-items: center; gap: 0.5rem; }
+.hmac-convert {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+.hmac-btn-generate {
+    padding: 1rem 3rem;
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: var(--radius-md);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.hmac-btn-generate:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255,107,53,0.3); }
+.hmac-btn-generate:active { transform: translateY(-1px); }
+.hmac-output {
+    background: var(--bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+.hmac-output::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 2px;
+    background: var(--gradient-primary);
+}
+.hmac-output-label {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 1.1rem; font-weight: 600; color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+.hmac-result {
+    background: rgba(255, 107, 53, 0.05);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    color: var(--text-primary);
+    min-height: 80px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+.hmac-btn-copy {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--bg-primary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex; align-items: center; gap: 0.5rem;
+}
+.hmac-btn-copy:hover { background: var(--primary-color); color: white; border-color: var(--primary-color); }
+.hmac-btn-copy.copied { background: #00d084; color: white; border-color: #00d084; }
+
+
+.back-button {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(20px);
+}
+
+.back-button:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
