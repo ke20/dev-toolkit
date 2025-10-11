@@ -303,8 +303,7 @@ body {
     background: rgba(255, 107, 53, 0.1);
 }
 
-.theme-toggle-btn .fa-sun { display: none; }
-.theme-toggle-btn .fa-moon { display: block; }
+/* Theme toggle removed */
 
 .mobile-menu-toggle {
     display: none;

@@ -1,5 +1,6 @@
 // Modern Dev Toolkit JavaScript
 // Interactive elements and animations
+// Updated: 2024-12-19 - Added Credit Card Validator tool
 
 // Global error handling
 window.addEventListener('error', function (e) {
@@ -28,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
     initSmoothScrolling();
     initParallaxEffect();
     initAdvancedSearch();
-    initThemeSystem();
     initPerformanceMonitoring();
     initMobileMenu();
     initSidebar();
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initMicroAnimations();
     initSectionAnimations();
     initBackToTop();
-    initDarkModeToggle();
+  // Theme system removed per user request
 
     // Hide loading screen after initialization
     setTimeout(hideLoadingScreen, 1500);
@@ -89,33 +89,7 @@ function hideLoadingScreen() {
   }
 }
 // Dark Mode Toggle Functionality
-function initDarkModeToggle() {
-    const themeToggleButton = document.getElementById('theme-toggle');
-    if (!themeToggleButton) return;
-
-    // Function to apply the theme based on the mode
-    const applyTheme = (theme) => {
-        if (theme === 'light') {
-            document.body.classList.add('light-mode');
-        } else {
-            document.body.classList.remove('light-mode');
-        }
-    };
-    
-    // Check for saved user preference on load
-    // Use 'ui-mode' to not conflict with the existing theme system
-    const savedTheme = localStorage.getItem('ui-mode') || 'dark';
-    applyTheme(savedTheme);
-
-    // Add event listener for the toggle button
-    themeToggleButton.addEventListener('click', () => {
-        const isLight = document.body.classList.contains('light-mode');
-        const newTheme = isLight ? 'dark' : 'light';
-        
-        applyTheme(newTheme);
-        localStorage.setItem('ui-mode', newTheme);
-    });
-}
+// Theme functions removed
 // Typing Effect Animation with performance optimization
 function initTypingEffect() {
   const typingText = document.querySelector(".typing-text");
@@ -830,6 +804,12 @@ function initAdvancedSearch() {
       keywords: ["web", "scraper", "scraping", "parser", "links", "images", "extract", "crawl", "spider", "url", "website", "api", "cors"],
       icon: "fas fa-spider",
       url: "tools/web-scraper/index.html",
+      name: "Credit Card Validator",
+      description: "Validate credit card numbers using the Luhn algorithm. Check if a card number is valid without storing any data - completely secure and private.",
+      category: "utility",
+      keywords: ["credit", "card", "validator", "validation", "luhn", "algorithm", "security", "payment", "check", "verify"],
+      icon: "fas fa-credit-card",
+      url: "tools/credit-card-validator/index.html",
     }
   ];
 
@@ -856,6 +836,14 @@ function initAdvancedSearch() {
 
   function handleSearch(query) {
     const results = fuzzySearch(query, toolsDatabase);
+    
+    // Debug logging
+    if (query.toLowerCase().includes('credit')) {
+      console.log('Search query:', query);
+      console.log('Search results:', results);
+      console.log('Credit Card Validator in results:', results.find(r => r.name === 'Credit Card Validator'));
+    }
+    
     updateToolDisplay(results, query);
 
     if (query.length > 0) {
@@ -1010,6 +998,14 @@ function initAdvancedSearch() {
       const isMatch = results.some(
         (result) => result.name.toLowerCase() === toolName.toLowerCase()
       );
+
+      // Debug logging for Credit Card Validator
+      if (toolName === 'Credit Card Validator') {
+        console.log('Credit Card Validator card found:', card);
+        console.log('Query:', query);
+        console.log('Results:', results);
+        console.log('Is match:', isMatch);
+      }
 
       if (query.length === 0 || isMatch) {
         card.style.display = "flex";
